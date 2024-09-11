@@ -15,7 +15,12 @@ function removeDuplicates(arr = []){
 
 // 3
 function capitalizeFirstLetter(str){
-    return str;
+    let words = str.split(' ');
+    words = words.map(w => {
+        if (w.at(w.length - 1) !== '.') return w.replace(w[0], w[0].toUpperCase());
+        return w;
+    });
+    return words.join(' ');
 }
 
 // 4
