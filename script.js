@@ -24,15 +24,19 @@ function capitalizeFirstLetter(str){
 }
 
 // 4
-function saveTasks(){
-
+function saveTasks(missions){
+    localStorage.missions = JSON.stringify(missions);
 }
 function loadTasks(){
-
+    return JSON.parse(localStorage.missions || '[]');
 }
-function addTask(){
-
+function addTask(miss){
+    let missionsList = loadTasks();
+    missionsList.push(miss);
+    saveTasks(missionsList);
 }
-function removeTask(){
-
+function removeTask(miss){
+    let missionsList = loadTasks();
+    missionsList.split(missionsList.indexOf(missionsList.find(e => e.id === miss.id)),1);
+    saveTasks(missionsList);
 }
